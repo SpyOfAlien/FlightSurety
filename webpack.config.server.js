@@ -21,6 +21,9 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: false,
+  },
   plugins: [
     new StartServerPlugin("server.js"),
     new webpack.NamedModulesPlugin(),
