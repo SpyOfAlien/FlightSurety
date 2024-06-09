@@ -8,35 +8,143 @@
     />
     <title>FlightSurety</title>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/air-datepicker@3.5.3/air-datepicker.min.css"
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/air-datepicker@3.5.3/air-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top px-4">
       <a class="navbar-brand" href="#">FlightSurety</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarsExampleDefault"
-        aria-controls="navbarsExampleDefault"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
+      <div class="ms-auto d-flex gap-4 text-white">
+        <div class="pr-2">
+          <span>Account: </span>
+          <span id="active-account"></span>
+        </div>
+
+        <div>
+          <span>Operational Status: </span>
+          <span id="operational-status"></span>
+        </div>
+      </div>
     </nav>
 
     <main class="container">
-      <div id="display-wrapper" class="top-20"></div>
-      <div class="row top-20">
-        <label class="form">Flight</label>
-        <input type="text" id="flight-number" />
-        <btn class="btn btn-primary" id="submit-oracle">Submit to Oracles</btn>
+      <div class="register-block" id="register-block">
+        <div class="register-airline w-50 p-4 d-flex gap-2 align-items-end">
+          <div class="w-60">
+            <label for="airline-address" class="form-label"
+              >Airline Address</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="airline-address"
+              placeholder="Enter airline address"
+            />
+          </div>
+          <div class="w-30">
+            <label for="airline-name" class="form-label">Airline Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="airline-name"
+              placeholder="Enter airline name"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary btn-3 w-30"
+            id="register-airline"
+          >
+            Register
+          </button>
+        </div>
+        <div
+          class="register-flight-block w-50 p-4 align-items-end gap-2"
+          id="register-flight-block"
+        >
+          <div class="w-60">
+            <label for="flight-code" class="form-label">Flight Code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="flight-code"
+              placeholder="Enter flight name"
+            />
+          </div>
+          <input class="departure form-control" data-language="en" id="departure" placeholder="Departure date"></input>
+          <button
+            type="button"
+            class="btn btn-primary btn-3 w-30"
+            id="register-flight"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+      <div class="my-credit" id="my-credit"></div>
+      <div class="my-airline-block" id="my-airline-block">
+        <h3>My Airline</h3>
+      </div>
+      <div class="confirm-block border-bottom" id="confirm-block">
+        <h3>Registered Airlines</h3>
+        <div class="airlines-list" id="airlines-list"></div>
+      </div>
+      <div class="flight-block">
+        <h3>Flights</h3>
+
+        <div class="flights-list" id="flights-list"></div>
       </div>
     </main>
+
+    <div
+      class="toast-container position-fixed top-0 start-50 translate-middle-x p-3 w-auto"
+    >
+      <div
+        id="success-toast"
+        class="toast align-items-center text-white bg-success border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="success-toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      <div
+        id="error-toast"
+        class="toast align-items-center text-white bg-danger border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="error-toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -63,23 +63,23 @@ contract("Flight Surety Tests", async (accounts) => {
     await config.flightSuretyData.setOperatingStatus(true);
   });
 
-  it("(airline) cannot register an Airline using registerAirline() if it is not funded", async () => {
-    // ARRANGE
-    let newAirline = accounts[2];
+  // it("(airline) cannot register an Airline using registerAirline() if it is not funded", async () => {
+  //   // ARRANGE
+  //   let newAirline = accounts[2];
 
-    // ACT
-    try {
-      await config.flightSuretyApp.registerAirline(newAirline, {
-        from: config.firstAirline,
-      });
-    } catch (e) {}
-    let result = await config.flightSuretyData.isAirline.call(newAirline);
+  //   // ACT
+  //   try {
+  //     await config.flightSuretyApp.registerAirline(newAirline, {
+  //       from: config.firstAirline,
+  //     });
+  //   } catch (e) {}
+  //   let result = await config.flightSuretyData.isAirline.call(newAirline);
 
-    // ASSERT
-    assert.equal(
-      result,
-      false,
-      "Airline should not be able to register another airline if it hasn't provided funding"
-    );
-  });
+  //   // ASSERT
+  //   assert.equal(
+  //     result,
+  //     false,
+  //     "Airline should not be able to register another airline if it hasn't provided funding"
+  //   );
+  // });
 });

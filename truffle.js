@@ -1,6 +1,6 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 var mnemonic =
-  "maximum dirt panda area wide toast marble music oven office result case";
+  "reunion script obtain rebel combine motion series pistol pave race video mammal";
 
 module.exports = {
   networks: {

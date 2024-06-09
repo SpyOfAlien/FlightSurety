@@ -55,6 +55,25 @@ export default class DOM {
     });
   }
 
+  static hideAndRemoveEleId(eleId) {
+    const ele = DOM.elid(eleId);
+    if (!ele) return;
+    if (ele.childNodes.length > 0) {
+      ele.replaceChildren();
+    }
+    ele.style.display = `none`;
+  }
+
+  static hideEleId(eleId) {
+    const ele = DOM.elid(eleId);
+    ele.style.display = `none`;
+  }
+
+  static showEleId(eleId, prop) {
+    const ele = DOM.elid(eleId);
+    ele.style.display = prop;
+  }
+
   static makeElement(type, textOrPropsOrChild, ...otherChildren) {
     const el = document.createElement(type);
 
